@@ -14,6 +14,13 @@ def test_getdevicesdrinfo_encode_req():
     assert data == b''
 
 
+def test_getdevicesdrinfo_encode_req_with_operation():
+    m = pyipmi.msgs.sensor.GetDeviceSdrInfoReq()
+    m.operation = 1
+    data = encode_message(m)
+    assert data == b'\x01'
+
+
 def test_getdevicesdrinfo_encode_rsp():
     m = pyipmi.msgs.sensor.GetDeviceSdrInfoRsp()
     decode_message(m, b'\x00\x03\x05')

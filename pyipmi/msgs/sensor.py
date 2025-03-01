@@ -30,6 +30,11 @@ from . import EventMessageRevision
 class GetDeviceSdrInfoReq(Message):
     __cmdid__ = constants.CMDID_GET_DEVICE_SDR_INFO
     __netfn__ = constants.NETFN_SENSOR_EVENT
+    __fields__ = (
+        Optional(
+            UnsignedInt('operation', 1, default=0)
+        ),
+    )
 
 
 @register_message_class
